@@ -7,7 +7,6 @@ file_put_contents("GITHUB_WEBHOOK_LAST_NON_VERIFIED", "here post" . serialize($_
 shell_exec("git pull");
 if( 'sha1=' . hash_hmac( 'sha1', $postBody, $_ENV['GITHUB_SECRET'], false ) === $_SERVER[ 'HTTP_X_HUB_SIGNATURE' ])
 {
-	echo "super secret data!";
 	file_put_contents("GITHUB_WEBHOOK_LAST", "here post" . serialize($_POST));
 }
 ?>
